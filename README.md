@@ -1,5 +1,5 @@
 # svg2stl
-this tool converts SVG to STL, which can then be loaded into any slicer and 3D printed.
+this tool converts SVG to STL, which then can be loaded into any slicer and 3D printed.
 - preserves the quality of image (to some extent)
 - fixes SVG by redrawing it from rasterized version
 - can create negatives
