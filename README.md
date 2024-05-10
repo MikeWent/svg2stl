@@ -24,14 +24,10 @@ KiCad PCB Editor / EasyEDA / Altium / etc:
 ```console
 git clone https://github.com/MikeWent/svg2stl
 cd svg2stl
-docker build -t svg2stl .
+docker comopse up -d
 ```
 
-in the directory with your exported SVG:
-```console
-docker run -itv .:/data svg2stl file.svg output.stl
-docker run -itv .:/data svg2stl file.svg output-negative.stl -1
-```
+then open: http://localhost:8044 and upload your file
 
 ### slice & print
 simply load STL into any slicer, such as Photon Workshop.

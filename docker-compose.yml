@@ -1,0 +1,11 @@
+services:
+  svg2stl:
+    build: .
+    container_name: svg2stl
+    ports:
+      - 8044:8044
+    restart: always
+    # volumes:
+    #   - source: ./app
+    #     target: /app
+    #     type: bind

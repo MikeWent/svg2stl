@@ -7,8 +7,8 @@ if [ "$#" -lt 2 ] || [ "$#" -gt 3 ]; then
 fi
 
 # script params.
-INPUT_SVG_PATH=/data/$1
-OUTPUT_STL_PATH=/data/$2
+INPUT_SVG_PATH=$1
+OUTPUT_STL_PATH=$2
 NEGATIVE=$3
 
 # preserve original svg size.
@@ -26,7 +26,7 @@ if [[ "$NEGATIVE" -eq "-1" ]]; then
 else
     im_params=""
 fi
-convert -density $DPI "$INPUT_SVG_PATH" $im_params bitmap.bmp
+convert -density $DPI "$INPUT_SVG_PATH" $im_params ./bitmap.bmp
 echo "OK"
 
 echo -n "converting bitmap back to SVG... "
@@ -35,12 +35,14 @@ potrace \
     --resolution $DPI \
     --width "$svg_width" \
     --height "$svg_height" \
-    --output openscad.svg \
-    bitmap.bmp
+    --output ./openscad.svg \
+    ./bitmap.bmp
 echo "OK"
 
 echo -n "rendering STL... "
-openscad -o "$OUTPUT_STL_PATH" svg2stl.scad
+cp /app/svg2stl.scad .
+openscad -o "$OUTPUT_STL_PATH" ./svg2stl.scad
 echo "OK"
 
 echo "done! $2"
+exit 0

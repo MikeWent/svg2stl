@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SVG2STL Converter</title>
+    <style>
+      /* CSS Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: white;
+        color: black;
+      }
+
+      .container {
+        text-align: center;
+        width: 90%;
+        max-width: 400px;
+        padding: 20px;
+        
+      }
+
+      h1 {
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        margin: 10px 0;
+      }
+
+      input[type="submit"] {
+        background: black;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background: grey;
+      }
+
+      a {
+        color: black;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      p {
+        margin-top: 20px;
+      }
+
+      form {
+        padding: 10px;
+        border: 2px solid black;
+        border-radius: 10px;
+      }
+
+      .messages {
+        color: red;
+        word-wrap: break-word;
+        font-family: 'Courier New', Courier, monospace;
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>SVG2STL</h1>
+      <p>Convert your SVG files (PCB designs, drawings) to STL format for 3D printing.</p>
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="messages">
+            {% for message in messages %}
+            <p>{{ message }}</p>
+            {% endfor %}
+            </ul>
+        {% endif %}
+      {% endwith %}
+      <p>
+          <form method="post" action="/upload" enctype="multipart/form-data" id="frm1">
+            <input type="file" name="file" required />
+            <label
+              ><input type="checkbox" name="negative" value="true" />
+              Negative</label
+            >
+            <input type="submit" id="btn1" value="Convert" />
+          </form>
+      </p>
+      <p>
+        view source code: <a href="https://github.com/MikeWent/svg2stl" target="_blank">GitHub</a>.
+      </p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "svg2stl"
+version = "0.1.0"
+description = ""
+authors = ["Mike_Went <github@meew.me>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+Flask = "^3.0.3"
+
+[tool.poetry.group.dev.dependencies]
+isort = "*"
+black = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

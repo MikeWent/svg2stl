@@ -1,11 +1,13 @@
-FROM debian:testing
+FROM python:3.12
 
 RUN apt update -y && \
     apt install -y openscad potrace imagemagick inkscape libxml2-utils
 
-ADD svg2stl.sh /opt/
-ADD svg2stl.scad /opt/
+COPY app /app
+ADD requirements.txt /app
 
-VOLUME [ "/data" ]
-WORKDIR /opt
-ENTRYPOINT [ "./svg2stl.sh" ]
+WORKDIR /app
+RUN --mount=type=cache,target=/root/.cache/pip \
+    pip3 install -r requirements.txt
+
+ENTRYPOINT [ "python3", "./server.py" ]
