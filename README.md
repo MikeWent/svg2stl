@@ -24,7 +24,7 @@ KiCad PCB Editor / EasyEDA / Altium / etc:
 ```console
 git clone https://github.com/MikeWent/svg2stl
 cd svg2stl
-docker comopse up -d
+docker compose up -d
 ```
 
 then open: http://localhost:8044 and upload your file
