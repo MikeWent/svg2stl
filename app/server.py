@@ -63,8 +63,8 @@ def upload():
         flash(f"error: {e} -- stdout: {e.output} -- stderr: {e.stderr}")
     except subprocess.TimeoutExpired:
         flash("timeout expired")
-    except Exception:
-        flash("exception: {e}")
+    except Exception as e:
+        flash(f"exception: {e}")
     finally:
         shutil.rmtree(temp_dir)
     return render_template("index.html")
